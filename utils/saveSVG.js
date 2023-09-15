@@ -1,4 +1,0 @@
-function saveSVG() (
-    let logoName = 
-
-)

@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const savefile = require('./lib/shapes')
+const render = require('./lib/createSVG');
+const renderSVG = require("./lib/createSVG");
 
 const questions = [
   {
@@ -55,8 +57,8 @@ function init() {
 
   inquirer.prompt(questions).then(function (answer) {
     console.log(answer);
-    var createSVG = document.create
-    writeToFile(answer.logoText, answer)
+    var createSVG = renderSVG();
+    writeToFile(answer.logoText, createSVG)
     
   });
 }

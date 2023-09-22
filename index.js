@@ -32,7 +32,7 @@ const questions = [
 //fuynction to save file to folder
 function writeToFile(fileName, data) {
   fs.appendFile(`./Logos/${fileName}.svg`, data, (err) =>
-    err ? console.log(err) : console.log("Logo is now created!")
+    err ? console.log(err) : console.log("Logo is now created and is saved in the 'Logos' folder!")
   );
 }
 

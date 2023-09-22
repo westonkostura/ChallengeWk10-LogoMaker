@@ -1,9 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const savefile = require('./lib/shapes')
-const render = require('./lib/createSVG');
+const shapes = require("./lib/shapes");
+const render = require("./lib/createSVG");
 const renderSVG = require("./lib/createSVG");
 
+//questions for inquirer
 const questions = [
   {
     type: "input",
@@ -28,12 +29,14 @@ const questions = [
   },
 ];
 
+//fuynction to save file to folder
 function writeToFile(fileName, data) {
-    fs.appendFile(`./Logos/${fileName}.svg`, data, (err) =>
-      err ? console.log(err) : console.log("Logo is now created!")
-    );
-  }
+  fs.appendFile(`./Logos/${fileName}.svg`, data, (err) =>
+    err ? console.log(err) : console.log("Logo is now created!")
+  );
+}
 
+//init function to initialize project
 function init() {
   console.log("**************************************************************");
   console.log("*   _                         __  __       _                 *");
@@ -56,10 +59,8 @@ function init() {
   console.log("**************************************************************");
 
   inquirer.prompt(questions).then(function (answer) {
-    console.log(answer);
-    var createSVG = renderSVG();
-    writeToFile(answer.logoText, createSVG)
-    
+    var createSVG = renderSVG(answer);
+    writeToFile(answer.logoText, createSVG);
   });
 }
 
